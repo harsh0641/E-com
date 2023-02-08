@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMage Slider</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .photo {
+        width: 1366px;
+        height: 620px;
+    }
+
+    .slide-container {
+        position: relative;
+        width: 100%;
+    }
+
+    .left {
+        cursor: pointer;
+        position: absolute;
+        top: 45%;
+        color: black;
+        font-size: 2rem;
+        background-color: rgba(255, 253, 253, 0.8);
+        padding: 8px 22px;
+        border-radius: 50%;
+    }
+
+    .right {
+        cursor: pointer;
+        position: absolute;
+        top: 45%;
+        color: black;
+        font-size: 2rem;
+        background-color: rgba(255, 253, 253, 0.8);
+        padding: 8px 22px;
+        border-radius: 50%;
+        right: 0%;
+    }
+
+    .caption {
+        color: #fff;
+        font-size: 3rem;
+        font-weight: bold;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+
+        background-color: rgba(0, 0, 0, 0.4);
+        padding: 10px 0;
+    }
+
+    .slide {
+        display: none;
+    }
+</style>
+
+<body>
+    <div class="slide-container">
+        <div class="slide">
+            <img class="photo" src="./david-marcu-78A265wPiO4-unsplash.jpg" alt="">
+            <div class="caption"> Caption 1</div>
+        </div>
+        <div class="slide">
+            <img class="photo" src="./henry-be-IicyiaPYGGI-unsplash.jpg" alt="">
+            <div class="caption"> Caption 2</div>
+        </div>
+        <div class="slide">
+            <img class="photo" src="./lukasz-szmigiel-jFCViYFYcus-unsplash.jpg" alt="">
+            <div class="caption"> Caption 3</div>
+        </div>
+        <div class="slide">
+            <img class="photo" src="./oppo-find-x5-pro-fNPsd6_ZiuA-unsplash.jpg" alt="">
+            <div class="caption"> Caption 4</div>
+        </div>
+        <div class="slide">
+            <img class="photo" src="./qingbao-meng-01_igFr7hd4-unsplash.jpg" alt="">
+            <div class="caption"> Caption 5</div>
+        </div>
+        <div class="slide">
+            <img class="photo" src="./v2osk-1Z2niiBPg5A-unsplash.jpg" alt="">
+            <div class="caption"> Caption 6</div>
+        </div>
+        <span class="left" onclick="control(-1)">&#10094;</span>
+        <span class="right" onclick="control(1)">&#10095;</span>
+    </div>
+
+    <script>
+        let flag = 0;
+        function control(x) {
+            flag = flag + x;
+            slideshow(flag);
+        }
+        slideshow(flag);
+        function slideshow(num) {
+
+            const slides = document.getElementsByClassName('slide');
+            if (flag == slides.length) {
+                flag = 0;
+                num = 0;
+            }
+
+            else if (num < 0) {
+                flag = slides.length - 1;
+                num = slides.length - 1;
+            }
+
+            for (let y of slides) {
+                y.style.display = 'none';
+            }
+
+            slides[num].style.display = 'block'
+
+        }
+    </script>
+</body>
+
+</html>
